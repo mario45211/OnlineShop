@@ -36,14 +36,17 @@ import Items.Item;
 import Items.MotherBoard;
 import Items.PowerSupply;
 import Items.Processor;
+import MainFrame.MainFrameController;
+import MainFrame.MainFrameModel;
+import MainFrame.MainFrameView;
 import Other.Dimension3D;
+import Other.ShopMemory;
 import Shop.Shop;
 import Users.User;
 
 public class ItemManagerFrame extends MyFrame{
 
 	private Shop shop;
-	private ObjectInputStream ois;
 	
 	private JButton addItemButton = new JButton("Dodaj");
 	private JButton searchItemButton = new JButton("Szukaj");
@@ -53,7 +56,6 @@ public class ItemManagerFrame extends MyFrame{
 	private JButton backToShopButton = new JButton("<-- Powrót do sklepu");
 	private Font normalFont = new Font(this.getName(),Font.BOLD, 14);
 	
-	private ObjectOutputStream oos;
 	private JScrollPane scrollPanel = new JScrollPane();
 	private JList itemList = new JList();
 	private JTextField manufacturerTextField = new JTextField();
@@ -125,22 +127,16 @@ public class ItemManagerFrame extends MyFrame{
 	private Item selectedItem;
 	private JComboBox searchItemTypeComboBox = new JComboBox();
 	private String filepath;
-	
+	private ShopMemory shopMemory;
 	
 	public ItemManagerFrame(String title, String filepath){
 		super(title);
 		this.filepath = filepath;
 		this.shop = new Shop(100,10,filepath);
 		
-		File file= new File(filepath);
-		try{
-			oos = new ObjectOutputStream(new FileOutputStream(file,true));
-			ois = new ObjectInputStream(new FileInputStream(file));
-		}catch(Exception e){
-			System.out.println("Init file streams error");
-		}
+		shopMemory = new ShopMemory(filepath);
 		
-		loadFromFile();
+		shop = (Shop)shopMemory.loadFromFile();
 		
 		diskDriveTypeComboBox.addItem("HDD");
 		diskDriveTypeComboBox.addItem("SDD");
@@ -347,9 +343,11 @@ public class ItemManagerFrame extends MyFrame{
 		
 		this.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
-				saveToFile();
+				shopMemory.saveToFile(shop);
 				dispose();
-				new MainFrame("Komputerowo",filepath);
+				MainFrameModel model = new MainFrameModel("src/file.dat");
+				MainFrameView view = new MainFrameView("Komputerowo");
+				MainFrameController controller = new MainFrameController(model,view);
 			}
 		});
 		showAllItemButton.doClick();
@@ -398,9 +396,11 @@ public class ItemManagerFrame extends MyFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveToFile();
+				shopMemory.saveToFile(shop);
 				dispose();
-				new MainFrame("Komputerowo",filepath);
+				MainFrameModel model = new MainFrameModel("src/file.dat");
+				MainFrameView view = new MainFrameView("Komputerowo");
+				MainFrameController controller = new MainFrameController(model,view);
 			}
 		});
 		itemList.addListSelectionListener(new ListSelectionListener() {
@@ -589,6 +589,7 @@ public class ItemManagerFrame extends MyFrame{
 				showAllItemButton.doClick();
 				
 			}
+			
 		});
 		
 		deleteItemButton.addActionListener(new ActionListener() {
@@ -1353,6 +1354,7 @@ public class ItemManagerFrame extends MyFrame{
 					numberOfItemTextField.setVisible(false);
 					comfirmAddItemButton.setVisible(false);
 				}
+				showAllItemButton.doClick();
 			}
 		});
 		
@@ -1437,22 +1439,5 @@ public class ItemManagerFrame extends MyFrame{
 		
 		setVisible(true);
 		
-	}
-	private void saveToFile(){
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream(new File(filepath)));
-			oos.writeObject(this.shop);
-			System.out.println("Save done!");
-		}catch(IOException e){
-			System.out.println("Write file error");
-		}
-	}
-	private void loadFromFile(){
-		try {
-			this.shop = (Shop)ois.readObject();
-			System.out.println("Load done!");
-		}catch(Exception e){
-			System.out.println("Load file error");
-		}
 	}
 }

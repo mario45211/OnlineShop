@@ -3,16 +3,18 @@ import java.io.Serializable;
 
 import Items.Item;
 
+
+//Abstrakcyjna klasa tworząca obiekty użytkowników sklepu, implementująca interfejs UserInterface 
+//przechowujący wymagane metody do obsługi każdego użytkownika
 public abstract class User implements UserInterface, Serializable{
-	private String username, password;
-	//tu dodac koszyk
-	
+	private String username, password; //każdy użytkownik posiada nazwę i hasło
 	
 	public User(String username, String password){
 		this.username = username;
 		this.password = password;
 	}
 	
+	//metody pozwalające na pobranie danych użytkownika
 	public String getUsername(){
 		return this.username;
 	}
@@ -29,9 +31,9 @@ public abstract class User implements UserInterface, Serializable{
 		this.password = password;
 	}
 	
-	public abstract Boolean addBoughtItem(Item item);
+	/*public abstract Boolean addBoughtItem(Item item);
 	public abstract Item[] getBoughtItem();
-	public abstract int getBoughtItemCounter();
+	public abstract int getBoughtItemCounter();*/
 	
 	@Override
 	public Boolean equals(String username, String password){
@@ -44,23 +46,6 @@ public abstract class User implements UserInterface, Serializable{
 	@Override
 	public String toString(){
 		return "Login:  "+this.username+"<br>Hasło:  "+this.password;
-	}
-	
-	public static String convertToHtml(String s){
-		char[] ch = s.toCharArray();
-		for(int i=0;i<s.length();i++){
-			if(ch[i]=='\\' && ch[i+1]=='n'){
-				String[] tmp = new String[s.length()+2];
-				System.arraycopy(s, 0, tmp, 0, i-1);
-				tmp[i]="<";
-				tmp[i+1]="b";
-				tmp[i+2]="r";
-				tmp[i+3]=">";
-				System.arraycopy(s, i, tmp, i+4, s.length()-i);
-				s=String.valueOf(tmp);			
-			}
-		}
-		return s;
 	}
 	
 }

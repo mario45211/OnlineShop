@@ -1,6 +1,8 @@
 package Users;
 import Items.Item;
 
+//klasa Customer tworzy obiekty klasy User, którzy mogą przeglądać i kupować przedmioty 
+//w sklepie, lecz nie mogą ich modyfikować
 public class Customer extends User{
 	static int permision = 1;
 	private Item[] boughtItem;
@@ -41,6 +43,6 @@ public class Customer extends User{
 	}
 	@Override
 	public String toString(){
-		return "Klient<br>"+super.toString();
+		return "KLIENT<br>"+super.toString();
 	}
 }

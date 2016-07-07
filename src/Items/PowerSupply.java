@@ -1,9 +1,9 @@
 package Items;
 
-
-
+//klasa przechowujące zasilacze komputerowe, dziedzicząca po klasie ComputerItem
 public class PowerSupply extends ComputerItem{
 
+	//pole przechowujące moc zasilacza
 	private int power;
 	
 	public PowerSupply(String manufacturer, String model, String description, int price,int power,int number){
@@ -19,7 +19,7 @@ public class PowerSupply extends ComputerItem{
 	
 	@Override
 	public String toString(){
-		return super.toString()+"<br>Moc:"+power+"<br>Opis:"+description+"Ilość dostępnych:"+numberOfItems;
+		return "ZASILACZ"+super.toString()+"<br>Moc: "+power+"<br>Opis: "+description+"Ilość dostępnych: "+numberOfItems+"<br>";
 	}
 	
 	public Boolean equals(PowerSupply obj){

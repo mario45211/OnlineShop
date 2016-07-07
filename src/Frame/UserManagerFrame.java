@@ -34,6 +34,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import MainFrame.MainFrameController;
+import MainFrame.MainFrameModel;
+import MainFrame.MainFrameView;
+import Other.ShopMemory;
 import Shop.Shop;
 import Users.Admin;
 import Users.Customer;
@@ -42,8 +46,6 @@ import Users.User;
 public class UserManagerFrame extends MyFrame{
 
 	private Shop shop;
-	private ObjectOutputStream oos;
-	private ObjectInputStream ois;
 	
 	private JComboBox userTypeComboBox = new JComboBox<String>();
 	private JButton AddButton = new JButton("Dodaj");
@@ -63,34 +65,25 @@ public class UserManagerFrame extends MyFrame{
 	private JButton comfirmSearchButton = new JButton("Szukaj");
 	private JButton backToShopButton = new JButton("<-- Powrót do sklepu");
 	private String filepath;
+	private ShopMemory shopMemory;
 	
 	public UserManagerFrame(String title, String filepath){
 		super(title);
 		this.filepath = filepath;
 		this.shop=new Shop(100,10,filepath);
 		
-		File file= new File(shop.getFilepath());
-		try{
-			oos = new ObjectOutputStream(new FileOutputStream(file,true));
-			ois = new ObjectInputStream(new FileInputStream(file));
-		}catch(Exception e){
-			System.out.println("Init file streams error");
-		}
+		shopMemory = new ShopMemory(filepath);
 		
-		loadFromFile();
+		shop = (Shop)shopMemory.loadFromFile();
 		
 		
 		this.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
-				saveToFile();
-				try{
-					oos.close();
-					ois.close();
-				}catch(IOException en){
-					System.out.println("Close stream error");
-				}
+				shopMemory.saveToFile(shop);
 				dispose();
-				new MainFrame("Komputerowo",filepath);
+				MainFrameModel model = new MainFrameModel("src/file.dat");
+				MainFrameView view = new MainFrameView("Komputerowo");
+				MainFrameController controller = new MainFrameController(model,view);
 			}
 		});
 		
@@ -171,15 +164,12 @@ public class UserManagerFrame extends MyFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveToFile();
-				try{
-					oos.close();
-					ois.close();
-				}catch(IOException en){
-					System.out.println("Close stream error");
-				}
+				shopMemory.saveToFile(shop);
+				
 				dispose();
-				new MainFrame("Komputerowo",filepath);
+				MainFrameModel model = new MainFrameModel("src/file.dat");
+				MainFrameView view = new MainFrameView("Komputerowo");
+				MainFrameController controller = new MainFrameController(model,view);
 			}
 		});
 		AddButton.addActionListener(new ActionListener(){
@@ -398,22 +388,4 @@ public class UserManagerFrame extends MyFrame{
 		this.setVisible(true);
 	}
 
-	private void saveToFile(){
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream(new File(filepath)));
-			oos.writeObject(this.shop);
-			System.out.println("Save done!");
-		}catch(IOException e){
-			System.out.println("Write file error");
-		}
-	}
-	
-	private void loadFromFile(){
-		try {
-			this.shop = (Shop)ois.readObject();
-			System.out.println("Load done!");
-		}catch(Exception e){
-			System.out.println("Load file error");
-		}
-	}
 }

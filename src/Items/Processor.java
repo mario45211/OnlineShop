@@ -1,6 +1,10 @@
 package Items;
 
+
+//klasa dziedzicząca po klasie ComputerItem, prezentująca procesory komputerowe
 public class Processor extends ComputerItem{
+	
+	//pola przechowujące parametry procesora
 	private String socket;
 	private int coreTiming, numberOfCores;
 	
@@ -24,8 +28,8 @@ public class Processor extends ComputerItem{
 	
 	@Override
 	public String toString(){
-		return "PROCESOR<br>"+super.toString()+"<br>Gniazdo: "+socket+"<br>Ilość rdzeni: "+numberOfCores+"<br>Taktowanie rdzeni: "+coreTiming+
-				"<br>Opis: "+description+"<br>Ilość dostępnych: "+numberOfItems;
+		return "PROCESOR"+super.toString()+"<br>Gniazdo: "+socket+"<br>Ilość rdzeni: "+numberOfCores+"<br>Taktowanie rdzeni: "+coreTiming+
+				"<br>Opis: "+description+"<br>Ilość dostępnych: "+numberOfItems+"<br>";
 	}
 	
 	public Boolean equals(Processor obj){

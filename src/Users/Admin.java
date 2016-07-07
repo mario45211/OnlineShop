@@ -2,6 +2,8 @@ package Users;
 
 import Items.Item;
 
+//Klasa Admin tworzy obiekty klasy User, które mogą modyfikować
+//produkty w sklepie, dodawać i usuwać, ale nie mogą ich kupować
 public class Admin extends User{
 	static int permision = 2;
 	
@@ -14,6 +16,7 @@ public class Admin extends User{
 		return Admin.permision;
 	}
 	
+	
 	@Override
 	public Boolean addBoughtItem(Item item){
 		System.out.println("Administratorzy nie moga kupowac swoich produktow");
@@ -25,7 +28,7 @@ public class Admin extends User{
 	}
 	@Override
 	public String toString(){
-		return "Administrator<br>"+super.toString();
+		return "ADMINISTRATOR<br>"+super.toString();
 	}
 	@Override
 	public int getBoughtItemCounter(){

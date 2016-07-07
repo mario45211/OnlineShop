@@ -5,7 +5,7 @@ import Users.User;
 
 public interface ShopInterface {
 	public Boolean addItem(Item item);
-	public Boolean deleteItem(int index);
+	public Boolean deleteItem(Item item);
 	
 	public Boolean addUser(User user);
 	public Boolean deleteUser(User user);

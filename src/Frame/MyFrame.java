@@ -22,6 +22,5 @@ public abstract class MyFrame extends JFrame{
 		this.getContentPane().setBackground(new Color(144,238,144));
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setVisible(true);
 	}
 }

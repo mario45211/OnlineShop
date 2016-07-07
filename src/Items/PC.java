@@ -38,10 +38,10 @@ public class PC extends ComputerItem{
 	
 	@Override
 	public String toString(){
-		return super.toString()+"<br>Procesor:"+processor.toString()+"<Płyta główna:"+motherboard.toString()+
-		"<br>Karta graficzna:"+graphicCard.toString()+"<br>Dysk:"+diskDrive.toString()
-		+"<br>Obudowa:"+computerCase.toString()+"<br>Zasilacz"+powerSupply.toString()+"<br>OS:"+operatingSystem+
-		"<br>Opis:"+description+"<br>Ilość dostępnych:"+numberOfItems;
+		return "PC"+super.toString()+"<br>Procesor: "+processor.toString()+"<Płyta główna: "+motherboard.toString()+
+		"<br>Karta graficzna: "+graphicCard.toString()+"<br>Dysk: "+diskDrive.toString()
+		+"<br>Obudowa: "+computerCase.toString()+"<br>Zasilacz: "+powerSupply.toString()+"<br>OS: "+operatingSystem+
+		"<br>Opis:  "+description+"<br>Ilość dostępnych:  "+numberOfItems+"<br>";
 		
 	}
 	

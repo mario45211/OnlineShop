@@ -1,7 +1,12 @@
 package Items;
 
+//klasa prezentująca obiekty dla laptopów
+//dziedzicząca po klasie Item, ponieważ laptop nie jest częścią komputera PC
+//lecz innych przedmiotem
 public class Laptop extends Item{
-	private String manufacturer, model, displayType,operatingSystem;
+	
+	//pola przechowujące parametry laptopa
+	private String manufacturer, model, displayType,operatingSystem="None";
 	private int displaySize, batteryCapacity, weight;
 	private int numberOfItems = 0;
 	
@@ -15,6 +20,7 @@ public class Laptop extends Item{
 		this.weight = weight;
 	
 	}
+	//konstruktor pozwalający na dodanie systemu opracyjnego
 	public Laptop(String description, int price, String manufacturer, String model, String displayType, int displaySize, int batteryCapacity, int weight,String operatingSystem,int number){
 		super(description,price,number);
 		this.manufacturer = manufacturer;
@@ -50,9 +56,9 @@ public class Laptop extends Item{
 	}
 	@Override
 	public String toString(){
-		return "Producent:"+manufacturer+"<br>Model:"+model+"<br>Cena:"+super.price+
-				"<br>Rozmiar ekranu:"+displaySize+"<br>Pojemność baterii:"+batteryCapacity
-				+"<br>Waga:"+weight+"<br>Opis:"+super.description+"<br>Ilość dostępnych:"+numberOfItems;
+		return "LAPTOP"+"<br>Producent:  "+manufacturer+"<br>Model:  "+model+"<br>Cena:  "+super.price+
+				"<br>Rozmiar ekranu:  "+displaySize+"<br>Pojemność baterii:  "+batteryCapacity
+				+"<br>Waga:  "+weight+"<br>Opis:  "+super.description+"<br>Ilość dostępnych:  "+numberOfItems+"<br>";
 	}
 	
 	public Boolean equals(Laptop obj){

@@ -1,7 +1,8 @@
 package Items;
 
+//klasa przechowująca obiekty dla komputerowych kart graficznych 
 public class GraphicCard extends ComputerItem{
-
+	//pola przechowujące szerokość magistrali oraz ilość graficznej pamięci RAM 
 	private int RAMMemory, PCIBus;
 	
 	public GraphicCard(String manufacturer, String model, String description, int price, int amountOfRAM, int wideOfPCIBus, int number){
@@ -21,7 +22,8 @@ public class GraphicCard extends ComputerItem{
 	
 	@Override
 	public String toString(){
-		return super.toString()+RAMMemory+PCIBus+numberOfItems;
+		return "KARTA GRAFICZNA"+super.toString()+"<br>Ilość graficznej pamięci RAM:  "+RAMMemory+
+				"<br>Szerokość magistrali:  "+PCIBus+"<br>Opis:  "+description+"<br>Ilość dostępnych:  "+numberOfItems+"<br>";
 	}
 	
 	public Boolean equals(GraphicCard obj){

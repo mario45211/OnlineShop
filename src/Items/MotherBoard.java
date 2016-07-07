@@ -1,7 +1,9 @@
 package Items;
 
+//klasa przechowująca obiekty dla płyt głównych
 public class MotherBoard extends ComputerItem{
 
+	//pola z parametrami płyty głównej
 	private String socket, typeOfRAM;
 	private int numberOfRAMSlot, numberOfPCIeSlot, numberOfUSBSlot;
 	
@@ -34,9 +36,9 @@ public class MotherBoard extends ComputerItem{
 	
 	@Override
 	public String toString(){
-		return super.toString()+"<br>Typ podstawki"+socket+"<br>Typ pamięci RAM:"+typeOfRAM
-				+"<br>Ilość slotów PCI:"+numberOfPCIeSlot+"<br>Ilość slotów pamięci RAM:"+numberOfRAMSlot+
-				"<br>Ilość slotów USB:"+numberOfUSBSlot+"<br>Opis:"+description+"<br>Ilość dostępnych:"+numberOfItems;
+		return "PŁYTA GŁÓWNA"+super.toString()+"<br>Typ podstawki: "+socket+"<br>Typ pamięci RAM: "+typeOfRAM
+				+"<br>Ilość slotów PCI:  "+numberOfPCIeSlot+"<br>Ilość slotów pamięci RAM:  "+numberOfRAMSlot+
+				"<br>Ilość slotów USB:  "+numberOfUSBSlot+"<br>Opis:  "+description+"<br>Ilość dostępnych:  "+numberOfItems+"<br>";
 	}
 	
 	public Boolean equals(MotherBoard obj){
