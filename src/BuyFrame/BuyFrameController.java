@@ -58,40 +58,11 @@ public class BuyFrameController {
 
 			}
 		});
+		view.searchItemButton.doClick();
 	}
-	
-	public BuyFrameController(BuyFrameModel model, BuyFrameView view,String searchString){
-		this.model = model;
-		this.view = view;
-		
-		model.searchItem = searchString;
-		
-		paintComponents();
-		
-		view.backToShopButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				model.shopMemory.saveToFile(model.shop);
-				view.dispose();
-				MainFrameModel model = new MainFrameModel("src/file.dat");
-				MainFrameView view = new MainFrameView("Komputerowo");
-				MainFrameController controller = new MainFrameController(model,view);
-			}
-		});
-		
-		view.addWindowListener(new WindowAdapter(){
-			public void windowClosing(WindowEvent e){
-				model.shopMemory.saveToFile(model.shop);
-				view.dispose();
 
-			}
-		});
-		
-	}
 	private void paintComponents(){
-	
-		
-		
+
 		if(model.shop.getLoggedUser()==null){
 			
 			view.userLabel.setText("Zaloguj się: ");
@@ -330,9 +301,6 @@ public class BuyFrameController {
 						model.shop.buyItem(view.selectedItem);
 						view.selectedItem=null;
 					}
-					
-					System.out.println("klik");
-					System.out.println(model.shop.getLoggedUser().getBoughtItemCounter());
 
 					view.refreshButton.doClick();
 					view.boughtItem.setText("Kupionych przedmiotów: "+model.shop.getLoggedUser().getBoughtItemCounter());

@@ -17,8 +17,15 @@ public class BuyFrameModel {
 		shopMemory = new ShopMemory(filepath);
 		shop = (Shop)shopMemory.loadFromFile();
 		this.filepath = filepath;
+		searchItem= "";
 	}
-
+	
+	public BuyFrameModel(String filepath,String s){
+		shopMemory = new ShopMemory(filepath);
+		shop = (Shop)shopMemory.loadFromFile();
+		this.filepath = filepath;
+		searchItem =s;
+	}
 	
 	public int getTotalCost(){
 		User user = shop.getLoggedUser();

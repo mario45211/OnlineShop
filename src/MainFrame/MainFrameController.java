@@ -302,8 +302,21 @@ public class MainFrameController {
 					view.signInButtonComfirm.setVisible(false);
 					view.userMenu.setVisible(false);
 					view.boughtItem.setVisible(false);
+					view.totalCostLabel.setVisible(false);
 					view.userLabel.setBounds(view.getSize().width-450, 10, view.getSize().width-350,25);
 				}
+			}
+		});
+		view.findButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String s = view.findTextField.getText();
+				
+				model.shopMemory.saveToFile(model.shop);
+				view.dispose();
+				new BuyFrameController(new BuyFrameModel(model.filepath,s),new BuyFrameView("Kup przedmiot - Komputerowo"));
+				
 			}
 		});
 	}

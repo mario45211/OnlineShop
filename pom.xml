@@ -5,6 +5,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Online_shop</name>
   <description>Online shop with gui</description>
+<dependencies>
+	  <dependency>
+	   <groupId>junit</groupId>
+	   <artifactId>junit</artifactId>
+	   <version>4.8.1</version>
+	   
+	  </dependency> 
+</dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -26,4 +34,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>

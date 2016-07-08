@@ -206,8 +206,7 @@ public class Shop implements ShopInterface, Serializable{
 	//zmniejsza ona ilość przedmiotów sklepie lub usuwa go z bazy, jeśli nie ma już dostępnych sztuk
 	public Boolean buyItem(Item item){
 		if(loggedUser!=null){
-			if(loggedUser.getPermision()==1){ //normal user
-								
+			if(loggedUser.getPermision()==1){ //normal user				
 				if(item.getNumberOfItems()>0){
 					if(loggedUser.addBoughtItem(item)){
 						item.decrementNumberOfItem();
@@ -215,17 +214,25 @@ public class Shop implements ShopInterface, Serializable{
 							if(deleteItem(item,true)){
 								return true;
 							}
+							else 
+								return false;
 						}
-					}
-					return true;
+						else
+							return true;
+						
+					}else 
+						return false;
 				}
+				else
+					return false;
 			}
+			else
+				return false;
 		}
 		else{
 			System.out.println("musisz najpierw sie zalogowac");
 			return false;
 		}
-		return null;//??????????
 	}
 	
 	public User getLoggedUser(){
