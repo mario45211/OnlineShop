@@ -273,6 +273,7 @@ public class BuyFrameController {
 						}
 					});
 					
+					
 					view.scrollPanel.setViewportView(view.itemList);
 					
 					view.searchItemTextField.setText("");
