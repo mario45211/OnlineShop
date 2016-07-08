@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import Frame.MyFrame;
 import Items.Item;
 
+/*klasa tworząca widok dla okienka umożliwiająca kupowanie przedmiotu*/
 public class BuyFrameView extends MyFrame{
 	
 	public JLabel mainLabel = new JLabel("Dostępne przedmioty:");

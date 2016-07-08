@@ -14,7 +14,6 @@ public class Main {
 		EventQueue.invokeLater(new Runnable(){
 			@Override
 			public void run(){
-				//new MainFrame("Komputerowo","src/file.dat");
 				MainFrameModel model = new MainFrameModel("src/file.dat");
 				MainFrameView view = new MainFrameView("Komputerowo");
 				MainFrameController controller = new MainFrameController(model,view);

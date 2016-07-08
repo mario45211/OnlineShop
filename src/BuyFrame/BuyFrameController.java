@@ -30,6 +30,7 @@ import MainFrame.MainFrameModel;
 import MainFrame.MainFrameView;
 import Users.Customer;
 
+/*klasa tworząca kontroler dla okienka umożliwiające kupowanie przedmiotu*/
 public class BuyFrameController {
 	private BuyFrameModel model;
 	private BuyFrameView view;
@@ -125,7 +126,7 @@ public class BuyFrameController {
 				
 				view.itemList.setListData(new Vector<Item>(list));
 				
-				view.itemList.setFixedCellHeight(160);
+				view.itemList.setFixedCellHeight(200);
 				view.itemList.setCellRenderer(new DefaultListCellRenderer(){
 					
 					@Override
@@ -260,7 +261,7 @@ public class BuyFrameController {
 					
 					view.itemList.setListData(new Vector<Item>(list));
 					
-					view.itemList.setFixedCellHeight(160);
+					view.itemList.setFixedCellHeight(200);
 					view.itemList.setCellRenderer(new DefaultListCellRenderer(){
 						
 						@Override

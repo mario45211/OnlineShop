@@ -5,6 +5,7 @@ import Other.ShopMemory;
 import Shop.Shop;
 import Users.User;
 
+/*klasa tworząca model dla okienka pozwalające kupowanie przedmiotów*/
 public class BuyFrameModel {
 	
 	public Shop shop;

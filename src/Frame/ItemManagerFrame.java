@@ -44,6 +44,7 @@ import Other.ShopMemory;
 import Shop.Shop;
 import Users.User;
 
+/*klasa tworząca okienko do zarządzania przedmiotami w sklepie*/
 public class ItemManagerFrame extends MyFrame{
 
 	private Shop shop;
@@ -418,7 +419,7 @@ public class ItemManagerFrame extends MyFrame{
 					list.add(shop.getItems()[i]);
 				itemList.setListData(new Vector<Item>(list));
 				
-				itemList.setFixedCellHeight(160);
+				itemList.setFixedCellHeight(200);
 				itemList.setCellRenderer(new DefaultListCellRenderer(){
 					
 					@Override
@@ -567,7 +568,7 @@ public class ItemManagerFrame extends MyFrame{
 				}
 				itemList.setListData(new Vector<Item>(list));
 				
-				itemList.setFixedCellHeight(160);
+				itemList.setFixedCellHeight(200);
 				itemList.setCellRenderer(new DefaultListCellRenderer(){
 					
 					@Override

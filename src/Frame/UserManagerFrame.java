@@ -43,6 +43,9 @@ import Users.Admin;
 import Users.Customer;
 import Users.User;
 
+/*klasa tworząca okienko do zarządzania użytkownikami 
+ * widoczne tylko dla zalogowanych administratorów
+ */
 public class UserManagerFrame extends MyFrame{
 
 	private Shop shop;

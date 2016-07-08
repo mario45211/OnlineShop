@@ -312,11 +312,11 @@ public class MainFrameController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String s = view.findTextField.getText();
-				
-				model.shopMemory.saveToFile(model.shop);
-				view.dispose();
-				new BuyFrameController(new BuyFrameModel(model.filepath,s),new BuyFrameView("Kup przedmiot - Komputerowo"));
-				
+				if(!s.equals("")){
+					model.shopMemory.saveToFile(model.shop);
+					view.dispose();
+					new BuyFrameController(new BuyFrameModel(model.filepath,s),new BuyFrameView("Kup przedmiot - Komputerowo"));
+				}
 			}
 		});
 	}

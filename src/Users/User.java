@@ -31,6 +31,11 @@ public abstract class User implements UserInterface, Serializable{
 		this.password = password;
 	}
 	
+	/**
+	 * metod realizuje wzorzec projektowy Template
+	 * jest to szablon do konwersji obiektu na ciąg znaków
+	 * wykorzystuje wywolania metod dla odpowiednich obiektów
+	 */
 	public String convertToText(){
 		StringBuffer string = new StringBuffer();
 		string.append(this.toString());

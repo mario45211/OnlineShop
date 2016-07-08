@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+/**klasa abstrakcyjna tworząca "szablon" okien graficznych**/
 public abstract class MyFrame extends JFrame{
 	
 	private Toolkit toolkit = Toolkit.getDefaultToolkit();

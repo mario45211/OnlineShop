@@ -22,6 +22,11 @@ public abstract class Item implements Serializable{
 		}
 	}
 	
+	/**
+	 * metod realizuje wzorzec projektowy Template
+	 * jest to szablon do konwersji obiektu na ciąg znaków
+	 * wykorzystuje wywolania metod dla odpowiednich obiektów
+	 */
 	public String convertToText(){
 		StringBuffer string = new StringBuffer();
 		string.append(this.toString());
@@ -66,6 +71,7 @@ public abstract class Item implements Serializable{
 	public int getPrice(){
 		return this.price;
 	}
+	
 	public String getDescription(){
 		return this.description;
 	}
