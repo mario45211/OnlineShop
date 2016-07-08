@@ -31,9 +31,11 @@ public abstract class User implements UserInterface, Serializable{
 		this.password = password;
 	}
 	
-	/*public abstract Boolean addBoughtItem(Item item);
-	public abstract Item[] getBoughtItem();
-	public abstract int getBoughtItemCounter();*/
+	public String convertToText(){
+		StringBuffer string = new StringBuffer();
+		string.append(this.toString());
+		return string+"";
+	}
 	
 	@Override
 	public Boolean equals(String username, String password){

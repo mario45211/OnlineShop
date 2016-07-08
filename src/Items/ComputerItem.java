@@ -20,7 +20,8 @@ public abstract class ComputerItem extends Item implements ComputerItemInterface
 	public String getModel(){
 		return this.model;
 	}
-
+	
+	
 	@Override
 	public String toString(){
 		return "<br>Producent:  "+manufacturer+"<br>Model:  "+model+"<br>Cena:  "+price+" zł";

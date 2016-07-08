@@ -47,7 +47,7 @@ public class BuyFrameController {
 				view.dispose();
 				MainFrameModel model = new MainFrameModel("src/file.dat");
 				MainFrameView view = new MainFrameView("Komputerowo");
-				MainFrameController controller = new MainFrameController(model,view);
+				new MainFrameController(model,view);
 			}
 		});
 		
@@ -132,7 +132,7 @@ public class BuyFrameController {
 					public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 						Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 						String pre = "<html><body style='width: 200px;margin: 20px'>";
-						((JLabel)renderer).setText(pre + ((Item)value).toString());
+						((JLabel)renderer).setText(pre + ((Item)value).convertToText());
 
 						return renderer;
 					}
@@ -267,7 +267,7 @@ public class BuyFrameController {
 						public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 							Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 							String pre = "<html><body style='width: 200px;margin: 20px'>";
-							((JLabel)renderer).setText(pre + ((Item)value).toString());
+							((JLabel)renderer).setText(pre + ((Item)value).convertToText());
 
 							return renderer;
 						}

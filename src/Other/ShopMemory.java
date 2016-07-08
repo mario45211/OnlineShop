@@ -9,6 +9,10 @@ import java.io.ObjectOutputStream;
 
 import Shop.Shop;
 
+/**klasa implementująca pamięć dla obiektów klasy Shop 
+ * jako implementacja wzorca projektowego Memento
+ * 
+ */
 public class ShopMemory {
 	private File file;
 	private ObjectOutputStream oos;
@@ -32,6 +36,12 @@ public class ShopMemory {
 		}catch(IOException e){
 			System.out.println("Write file error");
 		}
+		try{
+			oos.close();
+			ois.close();
+		}catch(Exception r){
+			System.out.println("Stream close error");
+		}
 	}
 
 	public Object loadFromFile(){
@@ -42,6 +52,8 @@ public class ShopMemory {
 		}catch(Exception e){
 			System.out.println("Load file error");
 		}
+		
+		
 		return obj;
 	}
 }

@@ -83,15 +83,13 @@ public class UserManagerFrame extends MyFrame{
 				dispose();
 				MainFrameModel model = new MainFrameModel("src/file.dat");
 				MainFrameView view = new MainFrameView("Komputerowo");
-				MainFrameController controller = new MainFrameController(model,view);
+				new MainFrameController(model,view);
 			}
 		});
-		
-		
-		
+
 		userTypeComboBox.addItem("Zwykły użytkownik");
 		userTypeComboBox.addItem("Administrator");
-		//this.setSize(new Dimension(600,600));
+		
 		paintComponents();
 		showAllUsersButton.doClick();
 	}
@@ -169,7 +167,7 @@ public class UserManagerFrame extends MyFrame{
 				dispose();
 				MainFrameModel model = new MainFrameModel("src/file.dat");
 				MainFrameView view = new MainFrameView("Komputerowo");
-				MainFrameController controller = new MainFrameController(model,view);
+				new MainFrameController(model,view);
 			}
 		});
 		AddButton.addActionListener(new ActionListener(){
@@ -267,7 +265,7 @@ public class UserManagerFrame extends MyFrame{
 				public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 					Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 					String pre = "<html><body style='width: 200px;margin: 15px'>";
-					((JLabel)renderer).setText(pre + ((User)value).toString());
+					((JLabel)renderer).setText(pre + ((User)value).convertToText());
 					
 					
 					return renderer;
@@ -301,7 +299,7 @@ public class UserManagerFrame extends MyFrame{
 						public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 							Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 							String pre = "<html><body style='width: 200px;margin: 15px'>";
-							((JLabel)renderer).setText(pre + ((User)value).toString());
+							((JLabel)renderer).setText(pre + ((User)value).convertToText());
 
 							return renderer;
 						}

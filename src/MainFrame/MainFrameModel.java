@@ -14,7 +14,7 @@ public class MainFrameModel {
 	
 	public MainFrameModel(String filepath){
 		shopMemory = new ShopMemory(filepath);
-		
+		//shop = new Shop(1,1,filepath);
 		shop = (Shop)shopMemory.loadFromFile();
 		this.filepath = filepath;
 	}

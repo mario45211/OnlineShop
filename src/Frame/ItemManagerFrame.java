@@ -345,9 +345,6 @@ public class ItemManagerFrame extends MyFrame{
 			public void windowClosing(WindowEvent e){
 				shopMemory.saveToFile(shop);
 				dispose();
-				MainFrameModel model = new MainFrameModel("src/file.dat");
-				MainFrameView view = new MainFrameView("Komputerowo");
-				MainFrameController controller = new MainFrameController(model,view);
 			}
 		});
 		showAllItemButton.doClick();
@@ -428,7 +425,7 @@ public class ItemManagerFrame extends MyFrame{
 					public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 						Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 						String pre = "<html><body style='width: 200px;margin: 20px'>";
-						((JLabel)renderer).setText(pre + ((Item)value).toString());
+						((JLabel)renderer).setText(pre + ((Item)value).convertToText());
 
 						return renderer;
 					}
@@ -451,7 +448,7 @@ public class ItemManagerFrame extends MyFrame{
 				 priceLabel.setVisible(false);;
 				 colorLabel.setVisible(false);
 				 diskDriveCapacityLabel.setVisible(false);
-				diskDriveReadSpeedLabel.setVisible(false);
+				 diskDriveReadSpeedLabel.setVisible(false);
 				 diskDriveWriteSpeedLabel.setVisible(false);
 				 diskDriveTypeLabel.setVisible(false);
 				 graphicCardPCIBusLabel.setVisible(false);
@@ -577,7 +574,7 @@ public class ItemManagerFrame extends MyFrame{
 					public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 						Component renderer  = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 						String pre = "<html><body style='width: 200px;margin: 20px'>";
-						((JLabel)renderer).setText(pre + ((Item)value).toString());
+						((JLabel)renderer).setText(pre + ((Item)value).convertToText());
 
 						return renderer;
 					}
@@ -677,9 +674,7 @@ public class ItemManagerFrame extends MyFrame{
 					String model = modelTextField.getText();
 					String itemType = searchItemTypeComboBox.getSelectedItem().toString();
 					
-					for(int i=0;i<shop.getItemCounter();i++){
-						
-					}
+					
 				}
 				else{
 					shop.deleteItem(selectedItem);

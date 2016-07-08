@@ -19,6 +19,7 @@ public abstract class MyFrame extends JFrame{
 		frameDimension[0] = new Dimension(screenDimension.width/3-200,screenDimension.height/3-200);
 		frameDimension[1] = new Dimension(screenDimension.width/3+400,screenDimension.height/3+400);
 		this.setBounds(frameDimension[0].width,frameDimension[0].height,frameDimension[1].width,frameDimension[1].height);
+		
 		this.getContentPane().setBackground(new Color(144,238,144));
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

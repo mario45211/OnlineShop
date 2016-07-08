@@ -22,8 +22,11 @@ public abstract class Item implements Serializable{
 		}
 	}
 	
-	//metoda abstrakcyjna zwracająca ciąg znaków, prezentujący dany obiekt
-	public abstract String toString();
+	public String convertToText(){
+		StringBuffer string = new StringBuffer();
+		string.append(this.toString());
+		return string+"";
+	}
 	
 	//metoda zwiększająca ilość dostępnych przedmiotów,
 	//używana przy dodawaniu przedmiotu, który już istnieje w bazie
